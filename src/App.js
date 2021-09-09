@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-param-reassign */
@@ -47,13 +48,31 @@ class App extends React.Component {
     };
 
     selectPoll = (pollId) => {
-        const poll = this.state.polls.filter((p) => p.id === pollId);
+        const poll = this.state.polls.find((p) => p.id === pollId);
         this.setState({ selectedPoll: poll });
     };
 
     handleSearch = (searchTerm) => {};
 
+    getOpinion = (res) => {
+        const { polls } = this.state;
+        const poll = polls.find((p) => p.id === res.pollId);
+        const option = poll.options.find((o) => o.id === res.selectedOption);
+
+        poll.totalVote++;
+        option.vote++;
+        const opinion = {
+            id: shortId.generate(),
+            name: res.name,
+            selectedOption: res.selectedOption,
+        };
+
+        poll.opinions.push(opinion);
+        this.setState({ polls: poll }); // change
+    };
+
     render() {
+        // console.log(this.state.selectedPoll);
         return (
             <Container className="my-5">
                 <Row>
@@ -67,7 +86,12 @@ class App extends React.Component {
                         />
                     </Col>
                     <Col md={8}>
-                        <MainContent />
+                        <MainContent
+                            poll={this.state.selectedPoll}
+                            getOpinion={this.getOpinion}
+                            updatePoll={this.updatePoll}
+                            deletePoll={this.deletePoll}
+                        />
                     </Col>
                 </Row>
             </Container>

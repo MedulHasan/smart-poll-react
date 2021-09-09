@@ -54,6 +54,7 @@ class ParticipationForm extends React.Component {
 
     render() {
         const { toggleModal, deletePoll, poll } = this.props;
+        // console.log('1:', typeof poll);
         return (
             <Form onSubmit={this.handleSubmit}>
                 <div className="d-flex">
@@ -97,7 +98,7 @@ class ParticipationForm extends React.Component {
                                 style={{
                                     padding: '5px 20px',
                                     background: 'yellow',
-                                    color: 'white',
+                                    color: 'black',
                                     borderRadius: '5px',
                                 }}
                                 className="ms-2"
@@ -124,7 +125,9 @@ class ParticipationForm extends React.Component {
                         <FormFeedback>{this.state.errors.name}</FormFeedback>
                     )}
                 </FormGroup>
-                <Button type="submit">Submit Your Opinion</Button>
+                <Button className="mt-2" type="submit">
+                    Submit Your Opinion
+                </Button>
             </Form>
         );
     }
