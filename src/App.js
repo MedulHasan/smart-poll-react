@@ -39,7 +39,7 @@ class App extends React.Component {
         poll.description = updatePoll.description;
         poll.options = updatePoll.options;
 
-        this.setState({ polls: poll }); // change
+        this.setState({ polls }); // change
     };
 
     deletePoll = (pollId) => {
@@ -52,7 +52,16 @@ class App extends React.Component {
         this.setState({ selectedPoll: poll });
     };
 
-    handleSearch = (searchTerm) => {};
+    handleSearch = (searchTerm) => {
+        this.setState({
+            searchTerm,
+        });
+    };
+
+    performSearch = () =>
+        this.state.polls.filter((poll) =>
+            poll.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+        );
 
     getOpinion = (res) => {
         const { polls } = this.state;
@@ -68,11 +77,11 @@ class App extends React.Component {
         };
 
         poll.opinions.push(opinion);
-        this.setState({ polls: poll }); // change
+        this.setState({ polls }); // change
     };
 
     render() {
-        // console.log(this.state.selectedPoll);
+        const polls = this.performSearch();
         return (
             <Container className="my-5">
                 <Row>
@@ -80,7 +89,7 @@ class App extends React.Component {
                         <SideBar
                             searchTerm={this.state.searchTerm}
                             handleSearch={this.handleSearch}
-                            polls={this.state.polls}
+                            polls={polls}
                             selectPoll={this.selectPoll}
                             addNewPoll={this.addNewPoll}
                         />

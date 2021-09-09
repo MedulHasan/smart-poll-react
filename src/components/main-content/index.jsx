@@ -17,7 +17,7 @@ class MainContent extends React.Component {
     };
 
     render() {
-        const { poll, getOption, updatePoll, deletePoll } = this.props;
+        const { poll, getOpinion, updatePoll, deletePoll } = this.props;
         // console.log(poll);
         if (Object.keys(poll).length === 0) {
             return (
@@ -38,7 +38,7 @@ class MainContent extends React.Component {
                 <br />
                 <ParticipationForm
                     poll={poll}
-                    getOption={getOption}
+                    getOpinion={getOpinion}
                     toggleModal={this.toggleModal}
                     deletePoll={deletePoll}
                 />
