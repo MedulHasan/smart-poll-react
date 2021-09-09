@@ -1,4 +1,5 @@
 import React from 'react';
+import ParticipationForm from './participate-form';
 
 class MainContent extends React.Component {
     render() {
