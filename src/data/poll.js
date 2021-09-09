@@ -21,7 +21,7 @@ const polls = [
             'There are lot of popular Front end framework availeable. Among them what is your favorite?',
         options: [
             { id: 'a1qw', value: 'react', vote: 0 },
-            { id: 'a2pl', value: 'Angular', vote: 0 },
+            { id: 'a2pw', value: 'Angular', vote: 0 },
             { id: 'a3qw', value: 'Vue', vote: 0 },
             { id: 'a4qw', value: 'Svalte', vote: 0 },
         ],

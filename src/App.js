@@ -63,6 +63,7 @@ class App extends React.Component {
                             handleSearch={this.handleSearch}
                             polls={this.state.polls}
                             selectPoll={this.selectPoll}
+                            addNewPoll={this.addNewPoll}
                         />
                     </Col>
                     <Col md={8}>
