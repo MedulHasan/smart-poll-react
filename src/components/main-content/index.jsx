@@ -4,6 +4,7 @@ import React from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import PollForm from '../poll-form';
 import ParticipationForm from './participate-form';
+import Opinions from './showOpinion';
 
 class MainContent extends React.Component {
     state = {
@@ -17,7 +18,8 @@ class MainContent extends React.Component {
     };
 
     render() {
-        const { poll, getOpinion, updatePoll, deletePoll } = this.props;
+        const { poll, getOpinion, updatePoll, deletePoll, opinions, handleShow, showOpinion } =
+            this.props;
         // console.log(poll);
         if (Object.keys(poll).length === 0) {
             return (
@@ -42,6 +44,7 @@ class MainContent extends React.Component {
                     toggleModal={this.toggleModal}
                     deletePoll={deletePoll}
                 />
+                <Opinions poll={poll} handleShow={handleShow} showOpinion={showOpinion} />
                 <Modal isOpen={this.state.openModal} toggle={this.toggleModal} unmountOnClose>
                     <ModalHeader toggle={this.toggleModal}>
                         Update Poll

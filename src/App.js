@@ -15,6 +15,7 @@ class App extends React.Component {
         polls: [],
         selectedPoll: {},
         searchTerm: '',
+        showOpinion: [],
     };
 
     componentDidMount() {
@@ -81,6 +82,7 @@ class App extends React.Component {
     };
 
     render() {
+        // console.log('v:', this.state.polls);
         const polls = this.performSearch();
         return (
             <Container className="my-5">
@@ -96,10 +98,13 @@ class App extends React.Component {
                     </Col>
                     <Col md={8}>
                         <MainContent
+                            opinions={this.state.polls}
+                            showOpinion={this.state.showOpinion}
                             poll={this.state.selectedPoll}
                             getOpinion={this.getOpinion}
                             updatePoll={this.updatePoll}
                             deletePoll={this.deletePoll}
+                            // handleShow={this.handleShow}
                         />
                     </Col>
                 </Row>
