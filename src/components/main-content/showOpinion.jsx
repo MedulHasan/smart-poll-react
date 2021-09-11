@@ -37,6 +37,7 @@ class Opinions extends React.Component {
         // console.log("total: ",poll);
         return (
             <div>
+                <h3>Show Opinions</h3>
                 <ButtonGroup className="my-3">
                     <Button onClick={this.allShow}>All</Button>
                     {poll.options.map((opt) => (
